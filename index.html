@@ -9,10 +9,9 @@
 
   <style>
     :root {
-      --bg: #f4f5f7;
-      --card: #ffffff;
       --text: #1f2937;
       --muted: #6b7280;
+      --card: rgba(255,255,255,0.92);
       --border: #e5e7eb;
       --accent: #111827;
     }
@@ -26,7 +25,11 @@
 
     body {
       min-height: 100vh;
-      background: var(--bg);
+      background:
+        radial-gradient(circle at 20% 20%, #fde68a 0%, transparent 35%),
+        radial-gradient(circle at 80% 30%, #bfdbfe 0%, transparent 40%),
+        radial-gradient(circle at 50% 80%, #fbcfe8 0%, transparent 40%),
+        #f3f4f6;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -38,19 +41,19 @@
       width: 100%;
       max-width: 560px;
       background: var(--card);
-      border-radius: 18px;
-      padding: 42px 40px;
+      backdrop-filter: blur(12px);
+      border-radius: 22px;
+      padding: 44px 42px;
       box-shadow:
-        0 10px 25px rgba(0,0,0,0.06),
-        0 2px 8px rgba(0,0,0,0.04);
-      animation: fadeIn 0.8s ease;
+        0 20px 40px rgba(0,0,0,0.08),
+        0 4px 12px rgba(0,0,0,0.05);
+      animation: fadeIn 0.9s ease;
     }
 
     h1 {
       font-size: 20px;
       font-weight: 500;
       margin-bottom: 28px;
-      letter-spacing: 0.2px;
     }
 
     p {
@@ -61,28 +64,41 @@
     }
 
     .divider {
-      width: 36px;
+      width: 38px;
       height: 2px;
       background: var(--border);
       margin: 28px 0;
       border-radius: 2px;
     }
 
-    button {
+    .action {
       margin-top: 18px;
-      background: transparent;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 20px;
+      border-radius: 999px;
       border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 12px 18px;
+      background: #fff;
       font-size: 14px;
+      font-weight: 500;
       color: var(--accent);
       cursor: pointer;
       transition: all 0.25s ease;
     }
 
-    button:hover {
-      background: #f9fafb;
-      border-color: #d1d5db;
+    .action span {
+      font-size: 16px;
+      transition: transform 0.25s ease;
+    }
+
+    .action:hover {
+      box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+      transform: translateY(-1px);
+    }
+
+    .action:hover span {
+      transform: translateX(4px);
     }
 
     .hidden {
@@ -90,7 +106,7 @@
     }
 
     .poem {
-      margin-top: 26px;
+      margin-top: 28px;
       padding-left: 18px;
       border-left: 2px solid var(--border);
       font-size: 14.5px;
@@ -100,15 +116,16 @@
     }
 
     .note {
-      margin-top: 20px;
+      margin-top: 22px;
       font-size: 14px;
       color: #6b7280;
+      animation: fadeIn 0.6s ease;
     }
 
     @keyframes fadeIn {
       from {
         opacity: 0;
-        transform: translateY(12px);
+        transform: translateY(14px);
       }
       to {
         opacity: 1;
@@ -139,7 +156,9 @@
       Sadece görmezden gelmek istemediğimi bilmeni istedim.
     </p>
 
-    <button onclick="openPoem()">Bir şey daha</button>
+    <button class="action" onclick="openPoem()">
+      Bir şey daha <span>→</span>
+    </button>
 
     <div id="poem" class="poem hidden">
       İkimiz birden sevinebiliriz göğe bakalım<br>
@@ -152,8 +171,8 @@
     </div>
 
     <div id="note" class="note hidden">
-  Şiir sevdiğini biliyorum. Ben de bu şiiri severim.  
-  Dediği gibi… şu ellerimi tut, göğe bakalım.
+      Şiir sevdiğini biliyorum. Ben de bu şiiri severim.  
+      Dediği gibi… şu ellerimi tut, göğe bakalım.
     </div>
   </div>
 
