@@ -3,73 +3,86 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Bir Şey Söylemek İstedim</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <title>Bir Not</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
   <style>
+    :root {
+      --bg: #f4f5f7;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --accent: #111827;
+    }
+
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
       font-family: 'Inter', sans-serif;
     }
 
     body {
       min-height: 100vh;
-      background: linear-gradient(135deg, #0f0f14, #1b1b22);
-      color: #eaeaea;
+      background: var(--bg);
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 24px;
+      color: var(--text);
     }
 
     .card {
-      max-width: 520px;
       width: 100%;
-      background: rgba(255,255,255,0.04);
-      backdrop-filter: blur(10px);
-      border-radius: 16px;
-      padding: 36px 32px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-      animation: fadeUp 1.2s ease forwards;
+      max-width: 560px;
+      background: var(--card);
+      border-radius: 18px;
+      padding: 42px 40px;
+      box-shadow:
+        0 10px 25px rgba(0,0,0,0.06),
+        0 2px 8px rgba(0,0,0,0.04);
+      animation: fadeIn 0.8s ease;
     }
 
     h1 {
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 500;
-      margin-bottom: 20px;
+      margin-bottom: 28px;
+      letter-spacing: 0.2px;
     }
 
     p {
       font-size: 15.5px;
-      line-height: 1.7;
-      color: #cfcfcf;
-      margin-bottom: 16px;
+      line-height: 1.75;
+      color: var(--muted);
+      margin-bottom: 18px;
     }
 
-    .line {
-      width: 40px;
+    .divider {
+      width: 36px;
       height: 2px;
-      background: #888;
-      margin: 24px 0;
+      background: var(--border);
+      margin: 28px 0;
       border-radius: 2px;
     }
 
     button {
-      margin-top: 20px;
-      padding: 12px 18px;
+      margin-top: 18px;
       background: transparent;
-      border: 1px solid #666;
-      border-radius: 10px;
-      color: #ddd;
-      cursor: pointer;
-      transition: all 0.3s ease;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px 18px;
       font-size: 14px;
+      color: var(--accent);
+      cursor: pointer;
+      transition: all 0.25s ease;
     }
 
     button:hover {
-      background: rgba(255,255,255,0.08);
-      border-color: #aaa;
+      background: #f9fafb;
+      border-color: #d1d5db;
     }
 
     .hidden {
@@ -77,25 +90,25 @@
     }
 
     .poem {
-      margin-top: 24px;
-      padding-left: 14px;
-      border-left: 2px solid rgba(255,255,255,0.15);
+      margin-top: 26px;
+      padding-left: 18px;
+      border-left: 2px solid var(--border);
       font-size: 14.5px;
-      line-height: 1.8;
-      color: #bdbdbd;
-      animation: fadeUp 0.8s ease forwards;
+      line-height: 1.9;
+      color: #374151;
+      animation: fadeIn 0.6s ease;
     }
 
-    .soft {
+    .note {
+      margin-top: 20px;
       font-size: 14px;
-      color: #9e9e9e;
-      margin-top: 18px;
+      color: #6b7280;
     }
 
-    @keyframes fadeUp {
+    @keyframes fadeIn {
       from {
         opacity: 0;
-        transform: translateY(14px);
+        transform: translateY(12px);
       }
       to {
         opacity: 1;
@@ -107,29 +120,26 @@
 <body>
 
   <div class="card">
-    <h1>Bir şey söylemek istedim</h1>
+    <h1>Bir not bırakmak istedim</h1>
 
     <p>
-      Son zamanlarda aramızda olanlar için biraz durup düşündüm.
-      Söylediklerim ya da söyleyemediklerim seni kırdıysa,
-      bunun farkındayım.
+      Son zamanlarda yaşananları biraz düşündüm.
+      Bazı şeyleri daha sakin ve daha doğru ifade edebilirdim.
     </p>
 
     <p>
-      Amacım hiçbir zaman seni üzmek değildi.
-      Ama niyet her zaman sonucu değiştirmiyor.
-      O yüzden bunu görmezden gelmek istemedim.
+      Seni kırdıysam bunun sorumluluğunu alıyorum.
+      Haklı çıkmak değil, doğru olmak daha önemliydi.
     </p>
 
-    <div class="line"></div>
+    <div class="divider"></div>
 
     <p>
-      Haklı çıkmak gibi bir derdim yok.
-      Sadece daha sakin, daha doğru davranabilirdim.
-      Bunun sorumluluğunu alıyorum.
+      Bu sayfayı uzatmak istemedim.
+      Sadece görmezden gelmek istemediğimi bilmeni istedim.
     </p>
 
-    <button onclick="showPoem()">Bir şey daha var</button>
+    <button onclick="openPoem()">Bir şey daha</button>
 
     <div id="poem" class="poem hidden">
       İkimiz birden sevinebiliriz göğe bakalım<br>
@@ -141,18 +151,18 @@
       Göğe bakalım
     </div>
 
-    <p id="note" class="soft hidden">
-      Konuşmak istersen buradayım.  
-      İstemezsen de buna saygı duyarım.
-    </p>
+    <div id="note" class="note hidden">
+  Şiir sevdiğini biliyorum. Ben de bu şiiri severim.  
+  Dediği gibi… şu ellerimi tut, göğe bakalım.
+    </div>
   </div>
 
   <script>
-    function showPoem() {
+    function openPoem() {
       document.getElementById("poem").classList.remove("hidden");
       document.getElementById("note").classList.remove("hidden");
     }
   </script>
 
 </body>
-  </html>
+</html>
